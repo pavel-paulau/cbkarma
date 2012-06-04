@@ -9,12 +9,12 @@ ${dochead.html("cbkarma")}
         <table class="display" id="stats_table">
             <thead>
                 <tr>
-                    <th width="14%" class="left">Test Id</th>
+                    <th width="20%" class="left">Test Id</th>
                     <th width="14%" class="left">Spec. name</th>
                     <th width="10%" class="left">Build</th>
-                    <th width="14%" class="left">Status</th>
-                    <th width="35%" class="left">Description</th>
-                    <th width="13%" class="left">Latest update</th>
+                    <th width="15%" class="left">Status</th>
+                    <th width="29%" class="left">Description</th>
+                    <th width="12%" class="left">Latest update</th>
                 </tr>
             </thead>
             <tbody>

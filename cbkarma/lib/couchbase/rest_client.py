@@ -189,10 +189,10 @@ class RestConnection(object):
     #http://10.1.6.108:8091/bucket-0/_design/dev_6ca50/_view/dev_6ca50?limit=10&_=1311107815807
     def view_results(self, bucket, design_doc, view, params, limit=100):
         if view:
-            view_query = '{0}/_design/{1}/_view/{2}'
+            view_query = 'couchBase/{0}/_design/{1}/_view/{2}'
         else:
             view_query = '{0}/{1}'
-        api = self.couch_api_base + view_query.format(bucket, design_doc, view)
+        api = self.baseUrl + view_query.format(bucket, design_doc, view)
         num_params = 0
         if limit != None:
             num_params = 1

@@ -30,7 +30,7 @@ class CbClient:
 
     def find(self, id):
         try:
-            doc = self.client.get(id)
+            doc = self.client.get(str(id))
             return json.loads(doc[-1])
         except:
             return {}

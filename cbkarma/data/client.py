@@ -26,7 +26,7 @@ class CbClient:
 
     def insert(self, id, doc={}):
         doc = json.dumps(doc)
-        return self.client.set(id, 0, 0, doc)
+        return self.client.set(str(id), 0, 0, doc)
 
     def find(self, id):
         try:

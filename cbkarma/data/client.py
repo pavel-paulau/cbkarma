@@ -38,7 +38,7 @@ class CbClient:
     def update_(self, id, doc={}):
         current = self.find(id)
         current.update(doc)
-        return self.client.set(id, 0, 0, doc)
+        return self.insert(id, doc)
 
     def query(self, bucket='default', ddoc='', view='', params=[], limit=100):
         return self.rest_client.view_results(bucket, ddoc, view, params, limit)

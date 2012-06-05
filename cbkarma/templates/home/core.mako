@@ -21,7 +21,7 @@ ${dochead.html("cbkarma")}
                 % for row in range(len(data)):
                 <tr>
                     <td class="left">${data[row]['timestamp']}</td>
-                    <td class="left">${data[row]['test_id']}</td>
+                    <td class="left"><a href='/details?id=${data[row]['test_id']}'>${data[row]['test_id']}</td>
                     <td class="left">${data[row]['spec']}</td>
                     <td class="left">${data[row]['build']}</td>
                     <td class="left">${data[row]['status']}</td>

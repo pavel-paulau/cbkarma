@@ -25,3 +25,21 @@ def home(request):
         })
 
     return {'data': data}
+
+@view_config(route_name='details', renderer='/details/core.mako')
+def details(request):
+    # Couchbase client
+    client = CbClient()
+
+    # Phases
+    id = request.GET['id']
+
+    events = client.find(id)['events']
+
+    phases = []
+    for event in sorted(events):
+        phases.append("{0} phase {1} at {2}".format(events[event]['phase'],
+                                                    events[event]['status'],
+                                                    event))
+
+    return {'phases': phases}

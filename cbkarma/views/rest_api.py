@@ -1,4 +1,5 @@
 import time
+import json
 from uuid import uuid4
 
 from pyramid.view import view_config
@@ -31,6 +32,21 @@ def update(request):
            'type': 'update'}
 
     client.update_(id, doc)
+
+    response = Response(id)
+    return response
+
+@view_config(route_name='histo')
+def histo(request):
+    client = CbClient()
+
+    id = request.POST.get('id', uuid4().hex)
+    try:
+        histogram = json.loads(request.POST.get('attachment', ''))
+    except ValueError:
+        histogram = {}
+
+    client.update_(id, histogram)
 
     response = Response(id)
     return response

@@ -8,5 +8,6 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('init', '/init')
     config.add_route('update', '/update')
+    config.add_route('histo', '/histo')
     config.scan()
     return config.make_wsgi_app()

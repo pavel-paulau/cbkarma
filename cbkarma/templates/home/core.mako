@@ -10,7 +10,7 @@ ${dochead.html("cbkarma")}
             <thead>
                 <tr>
                     <th width="12%" class="left">Latest update</th>
-                    <th width="20%" class="left">Test Id</th>
+                    <th width="20%" class="left">Test ID</th>
                     <th width="14%" class="left">Spec. name</th>
                     <th width="10%" class="left">Build</th>
                     <th width="15%" class="left">Status</th>

@@ -29,8 +29,11 @@ class CbClient:
         return self.client.set(id, 0, 0, doc)
 
     def find(self, id):
-        doc = self.client.get(id)
-        return json.loads(doc[-1])
+        try:
+            doc = self.client.get(id)
+            return json.loads(doc[-1])
+        except:
+            return {}
 
     def update_(self, id, doc={}):
         current = self.find(id)

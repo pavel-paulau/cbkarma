@@ -25,10 +25,13 @@ def update(request):
     phase = request.POST.get('phase', '')
     status = request.POST.get('status', '')
 
+    events = client.find(id).get('events', {})
+    events.update({timestamp: {'phase': phase, 'status': status}})
+
     doc = {'build': build,
            'spec': spec,
            'description': description,
-           'events': {timestamp: {'phase': phase, 'status': status}},
+           'events': events,
            'type': 'update'}
 
     client.update_(id, doc)

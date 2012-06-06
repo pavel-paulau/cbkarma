@@ -3,6 +3,8 @@
 
 ${dochead.html("cbkarma")}
 <div class="summary" id="summary-table">
+    <a href="/"><pre>Back to Dashboard</pre></a>
+
     <p class="title">Phases</p>
     % for phase in phases:
         <pre>${phase}</pre>

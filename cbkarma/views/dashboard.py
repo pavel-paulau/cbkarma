@@ -1,5 +1,6 @@
 from pyramid.view import view_config
 from cbkarma.data.client import CbClient
+from cbkarma.lib.histo import LatencyDict
 
 @view_config(route_name='home', renderer='/home/core.mako')
 def home(request):
@@ -42,4 +43,7 @@ def details(request):
                                                     events[event]['status'],
                                                     event))
 
-    return {'phases': phases}
+    histograms = client.find(id).get('histograms', {})
+    histograms = dict((d, LatencyDict(a)) for d, a in histograms.iteritems())
+
+    return {'phases': phases, 'histograms': histograms}

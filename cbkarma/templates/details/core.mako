@@ -5,7 +5,12 @@ ${dochead.html("cbkarma")}
 <div class="summary" id="summary-table">
     <p class="title">Phases</p>
     % for phase in phases:
-        <p>${phase}</p>
+        <pre>${phase}</pre>
+    % endfor
+    <p class="title">Histograms</p>
+    % for description, attachment in histograms.items():
+        <p><b>${description}</b></p>
+        <pre>${attachment}</pre>
     % endfor
 </div>
 ${footer.mako()}

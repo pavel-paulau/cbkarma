@@ -5,6 +5,7 @@
 <script type='text/javascript' src='/static/scripts/jquery-1.7.min.js'></script>
 <script type='text/javascript' src='/static/scripts/datatables/jquery.dataTables.min.js'></script>
 <script type='text/javascript' src='/static/scripts/datatables/ColReorder.min.js'></script>
+<script type='text/javascript' src='/static/scripts/jquery-ui-1.8.21.custom.min.js'></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {
@@ -21,6 +22,11 @@
     });
 </script>
 
+<script>
+    $(function() {
+        $( "#tabs" ).tabs({ selected: 0});
+    });
+</script>
 
 </body>
 </html>

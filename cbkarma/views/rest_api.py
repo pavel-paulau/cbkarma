@@ -44,12 +44,16 @@ def histo(request):
     client = CbClient()
 
     id = request.POST.get('id', uuid4().hex)
-    try:
-        histogram = json.loads(request.POST.get('attachment', ''))
-    except ValueError:
-        histogram = {}
+    description = request.POST.get('description', uuid4().hex)
+    attachment = request.POST.get('attachment', '')
+    attachment = json.loads(str(attachment))
 
-    client.update_(id, histogram)
+    histograms = client.find(id).get('histograms', {})
+    histograms.update({description: attachment})
+
+    doc = {'histograms': histograms}
+
+    client.update_(id, doc)
 
     response = Response(id)
     return response

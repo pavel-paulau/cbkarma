@@ -14,7 +14,7 @@
             "sPaginationType": "full_numbers",
             "sDom": 'R<"H"lfr>t<"F"ip<',
             "bAutoWidth": false,
-            "iDisplayLength": 10,
+            "iDisplayLength": 25,
             "aaSorting": [[ 0, "desc" ]]
         });
  

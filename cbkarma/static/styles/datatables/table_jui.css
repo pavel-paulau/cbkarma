@@ -167,16 +167,16 @@ table.display tr.heading2 td {
 
 table.display td {
 	padding: 3px 10px;
-	color: #498a2d;
+	color: #252525;
 }
 
 table.display td.center {
 	text-align: center;
-	color: #498a2d;
+	color: #252525;
 }
 table.display td.left {
 	text-align: left;
-	color: #498a2d;
+	color: #252525;
         overflow:hidden;
 }
 
@@ -209,7 +209,7 @@ table.display td.left {
  * DataTables row classes
  */
 tr.odd {
-	background-color: #F2FBED;
+	background-color: #e6e6e6;
 }
 
 tr.even {
@@ -305,29 +305,12 @@ table.display tr.odd.row_selected td {
  */
 /* For the standard odd/even */
 tr.odd td.sorting_1 {
-	background-color: #C0D0B8;
-}
-
-tr.odd td.sorting_2 {
-	background-color: #DADCFF;
-}
-
-tr.odd td.sorting_3 {
-	background-color: #E0E2FF;
+	background-color: #bebebe;
 }
 
 tr.even td.sorting_1 {
-	background-color: #F4F9F1;
+	background-color: #e6e6e6;
 }
-
-tr.even td.sorting_2 {
-	background-color: #F2F3FF;
-}
-
-tr.even td.sorting_3 {
-	background-color: #F9F9FF;
-}
-
 
 /* For the Conditional-CSS grading rows */
 /*

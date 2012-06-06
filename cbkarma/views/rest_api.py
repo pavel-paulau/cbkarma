@@ -34,7 +34,7 @@ def update(request):
            'events': events,
            'type': 'update'}
 
-    client.update_(id, doc)
+    client.update(id, doc)
 
     response = Response(id)
     return response
@@ -53,7 +53,7 @@ def histo(request):
 
     doc = {'histograms': histograms}
 
-    client.update_(id, doc)
+    client.update(id, doc)
 
     response = Response(id)
     return response

@@ -35,7 +35,7 @@ class CbClient:
         except:
             return {}
 
-    def update_(self, id, doc={}):
+    def update(self, id, doc={}):
         current = self.find(id)
         current.update(doc)
         return self.insert(id, current)

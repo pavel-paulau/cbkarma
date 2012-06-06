@@ -46,4 +46,5 @@ def details(request):
     histograms = client.find(id).get('histograms', {})
     histograms = dict((d, LatencyDict(a)) for d, a in histograms.iteritems())
 
-    return {'phases': phases, 'histograms': histograms}
+    return {'phases': phases, 'histograms': histograms,
+            'build': client.find(id)['build'], 'spec': client.find(id)['spec']}

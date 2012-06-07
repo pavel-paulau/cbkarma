@@ -2,8 +2,6 @@ import string
 import re
 import math
 
-INT_TYPE = type(123)
-FLOAT_TYPE = type(0.1)
 DICT_TYPE = type({})
 
 class LatencyDict(dict):
@@ -44,9 +42,9 @@ class LatencyDict(dict):
 
         histo_cur = 0 # Running total for histogram output.
         for key in scalars:
-            if type(key) == FLOAT_TYPE:
-                k = re.sub("0*$", "", "%.7f" % (key))
-            else:
+            try:
+                k = re.sub("0*$", "", "%.7f" % (float(key)))
+            except:
                 k = str(key)
             if ljust:
                 k = string.ljust(k, ljust)

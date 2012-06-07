@@ -43,11 +43,9 @@ class LatencyDict(dict):
                 histo_sum = histo_sum + v
 
         histo_cur = 0 # Running total for histogram output.
-        import pdb
         for key in scalars:
             if type(key) == FLOAT_TYPE:
                 k = re.sub("0*$", "", "%.7f" % (key))
-                print k
             else:
                 k = str(key)
             if ljust:

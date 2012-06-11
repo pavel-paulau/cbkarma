@@ -24,21 +24,21 @@ class CbClient:
         }
         self.rest_client = RestConnection(server)
 
-    def insert(self, id, doc={}):
+    def insert(self, test_id, doc={}):
         doc = json.dumps(doc)
-        return self.client.set(str(id), 0, 0, doc)
+        return self.client.set(str(test_id), 0, 0, doc)
 
-    def find(self, id):
+    def find(self, test_id):
         try:
-            doc = self.client.get(str(id))
+            doc = self.client.get(str(test_id))
             return json.loads(doc[-1])
         except:
             return {}
 
-    def update(self, id, doc={}):
-        current = self.find(id)
+    def update(self, test_id, doc={}):
+        current = self.find(test_id)
         current.update(doc)
-        return self.insert(id, current)
+        return self.insert(test_id, current)
 
     def query(self, bucket='default', ddoc='', view='', params=[], limit=100):
         return self.rest_client.view_results(bucket, ddoc, view, params, limit)

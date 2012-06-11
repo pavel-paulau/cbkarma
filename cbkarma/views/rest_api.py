@@ -17,7 +17,7 @@ def init(request):
 def update(request):
     client = CbClient()
 
-    id = request.POST.get('id', uuid4().hex)
+    test_id = request.POST.get('id', uuid4().hex)
 
     build = request.POST.get('build', '')
     spec = request.POST.get('spec', '')
@@ -26,7 +26,7 @@ def update(request):
     phase = request.POST.get('phase', '')
     status = request.POST.get('status', '')
 
-    events = client.find(id).get('events', {})
+    events = client.find(test_id).get('events', {})
     events.update({timestamp: {'phase': phase, 'status': status}})
 
     doc = {'build': build,
@@ -35,28 +35,28 @@ def update(request):
            'events': events,
            'type': 'update'}
 
-    client.update(id, doc)
+    client.update(test_id, doc)
 
-    response = Response(id)
+    response = Response(test_id)
     return response
 
 @view_config(route_name='histo')
 def histo(request):
     client = CbClient()
 
-    id = request.POST.get('id', uuid4().hex)
+    test_id = request.POST.get('id', uuid4().hex)
     description = request.POST.get('description', uuid4().hex)
     attachment = request.POST.get('attachment', '')
     attachment = json.loads(str(attachment))
 
-    histograms = client.find(id).get('histograms', {})
+    histograms = client.find(test_id).get('histograms', {})
     histograms.update({description: attachment})
 
     doc = {'histograms': histograms}
 
-    client.update(id, doc)
+    client.update(test_id, doc)
 
-    response = Response(id)
+    response = Response(test_id)
     return response
 
 @view_config(route_name='report')

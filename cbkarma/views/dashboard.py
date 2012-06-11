@@ -33,9 +33,9 @@ def details(request):
     client = CbClient()
 
     # Phases
-    id = request.GET['id']
+    test_id = request.GET['id']
 
-    events = client.find(id)['events']
+    events = client.find(test_id)['events']
 
     phases = []
     for event in sorted(events):
@@ -43,11 +43,12 @@ def details(request):
                                                     events[event]['status'],
                                                     event))
 
-    histograms = client.find(id).get('histograms', {})
+    histograms = client.find(test_id).get('histograms', {})
     histograms = dict((d, LatencyDict(a)) for d, a in histograms.iteritems())
 
-    reports = client.find(id).get('reports', {})
+    reports = client.find(test_id).get('reports', {})
 
     return {'phases': phases, 'histograms': histograms, 'reports': reports,
-            'build': client.find(id)['build'], 'spec': client.find(id)['spec'],
-            'test_id': id}
+            'build': client.find(test_id)['build'],
+            'spec': client.find(test_id)['spec'],
+            'test_id': test_id}

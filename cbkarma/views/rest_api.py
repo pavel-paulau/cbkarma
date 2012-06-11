@@ -37,8 +37,7 @@ def update(request):
 
     client.update(test_id, doc)
 
-    response = Response(test_id)
-    return response
+    return Response(test_id)
 
 @view_config(route_name='histo')
 def histo(request):
@@ -56,8 +55,7 @@ def histo(request):
 
     client.update(test_id, doc)
 
-    response = Response(test_id)
-    return response
+    return Response(test_id)
 
 @view_config(route_name='report')
 def report(request):

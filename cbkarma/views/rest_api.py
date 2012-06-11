@@ -4,6 +4,7 @@ from uuid import uuid4
 
 from pyramid.view import view_config
 from pyramid.response import Response
+from pyramid.httpexceptions import HTTPFound
 
 from cbkarma.data.client import CbClient
 
@@ -57,3 +58,24 @@ def histo(request):
 
     response = Response(id)
     return response
+
+@view_config(route_name='report')
+def report(request):
+    client = CbClient()
+
+    test_id = request.POST.get('test_id', uuid4().hex)
+    description = request.POST.get('description', uuid4().hex)
+    url = request.POST.get('url', '')
+
+    reports = client.find(test_id).get('reports', {})
+    reports.update({description: url})
+
+    doc = {'reports': reports}
+
+    client.update(test_id, doc)
+
+    if request.POST.get('submit'):
+        location = '/details?id={0}'.format(test_id)
+        return HTTPFound(location)
+    else:
+        return Response(test_id)

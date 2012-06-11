@@ -10,5 +10,6 @@ def main(global_config, **settings):
     config.add_route('update', '/update')
     config.add_route('histo', '/histo')
     config.add_route('details', '/details')
+    config.add_route('report', '/report')
     config.scan()
     return config.make_wsgi_app()

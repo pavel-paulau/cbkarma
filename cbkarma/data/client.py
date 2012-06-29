@@ -1,36 +1,28 @@
 import json
 
-from cbkarma.lib.couchbase.couchbaseclient import VBucketAwareCouchbaseClient
 from cbkarma.lib.couchbase.rest_client import RestConnection
+import memcache
 
 class CbClient:
     """Abstract couchbase client"""
 
-    def __init__(self, host='localhost', port='8091', bucket='default',
-                 username='Administrator', password='password'):
-        protocol = "http://"
-        api = "/pools/default"
-        uri = protocol + host + ":" + port + api
+    def __init__(self, host='localhost', port='8091', username='Administrator',
+                 password='password'):
+        """Initialize memcache and couchbase clients"""
 
-        self.client = VBucketAwareCouchbaseClient(uri, bucket, password, True)
-
-        self.bucket = bucket
-
-        server = {
-            'ip': host,
-            'port': port,
-            'username': username,
-            'password': password,
-        }
+        server = {'ip': host, 'port': port,
+                  'username': username, 'password': password}
         self.rest_client = RestConnection(server)
+
+        self.mc_client = memcache.Client([host + ':11211'], debug=0)
 
     def insert(self, test_id, doc={}):
         doc = json.dumps(doc)
-        return self.client.set(str(test_id), 0, 0, doc)
+        return self.mc_client.set(str(test_id), doc)
 
     def find(self, test_id):
         try:
-            doc = self.client.get(str(test_id))
+            doc = self.mc_client.get(str(test_id))
             return json.loads(doc[-1])
         except:
             return {}
